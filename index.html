@@ -254,9 +254,13 @@
             first.innerHTML = "<ul>" + team1.map(c => "<li> " + c.name + " (" + c.value + ")" + "</li>").join("") + "</ul>"
                 }
 
-                if (alcount == times && count == times) {
+                if (alcount == altimes && count == times) {
                     clearInterval(inter)
+                    count = 0
+                    alcount = 0
                 }
+
+
 
             }, 500)
         }
