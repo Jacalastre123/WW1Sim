@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&family=Funnel+Display:wght@300..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jersey+10&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<style>
+    body {
+        font-family: Alan Sans;
+        text-align: center;
+    }
+
+    dialog {
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    button {
+        background-color: rgb(73, 179, 255);
+
+    }
+
+    .container {
+        display: flex;
+        background-color: rgb(96, 175, 231);
+        text-align: center;
+        margin-top: 7px;
+       
+        width: 99%;
+    }
+
+    .central {
+        background-color: rgb(228, 91, 91);
+        
+       padding: 10px;
+       width: 50%;
+     
+    }
+
+    .allied {
+        background-color: rgba(0,0,0,0.1);
+     
+       padding: 10px;
+       
+       width: 50%;
+     
+    }
+
+    .central, .allied  {
+    
+        flex: 1;
+        padding: 10px;
+        height: auto;
+    }
+
+    .central ul, .allied ul {
+  
+        margin: 0;
+      height: auto;
+        padding-left: 20px;
+        list-style-position: inside;
+        word-wrap: break-word;
+    }
+</style>
+</head>
+<body>
+    <h1>WW1 Simulator</h1>
+    <form>
+   
+        <select id="country">
+            
+            <option value="France">France</option>
+            <option value="Russia">Russia</option>
+           
+            <option value="Britain">United Kingdom</option>
+            <option value="Serbia">Serbia</option>
+            <option value="Romania">Romania</option>
+            <option value="Montenegro">Montenegro</option>
+            <option value="Greece">Greece</option>
+            <option value="Belgium">Belgium</option>
+            <option value="Luxembourg">Luxembourg</option>
+        </select>
+    </form><br>
+
+    <button id="next" onclick="nextTeam()">Team 2</button>
+    <button onclick="submit()">Submit</button>
+    <button onclick="fight()">Fight</button>
+     <button onclick="randoms()">Randomise 14/10</button>
+     <button onclick="deletes()">Delete</button>
+    <br>
+    <br>
+    <div class="container">
+        <div class="allied">
+    <h3>The Eternete</h3>
+    <p id="first"></p>
+    </div>
+    <div class="central">
+    <h3>Central Powers</h3>
+    <p id="seco"></p>
+    </div>
+</div>
+    <dialog id="logs">
+        <h4 id="vict">Central Powers Won!</h4>
+        <h5 id="cento"></h5>
+        <button onclick="logs.close();">Close</button>
+    </dialog>
+    <script>
+        const country = document.getElementById("country")
+        const first = document.getElementById("first")
+        const second = document.getElementById("seco")
+        const next = document.getElementById("next")
+        const logs = document.getElementById("logs")
+        const vict = logs.querySelector("#vict")
+        const cento = logs.querySelector("#cento")
+        let team1 = []
+        let team2 = []
+        let teams = false
+
+        let texto = "<option value='France'>France</option><option value='Russia'>Russia</option><option value='Britain'>United Kingdom</option><option value='Serbia'>Serbia</option><option value='Romania'>Romania</option><option value='Montenegro'>Montenegro</option><option value='Greece'>Greece</option><option value='Belgium'>Belgium</option><option value='Luxembourg'>Luxembourg/option>"
+        
+
+        const countryvalues = {
+            "Germany": 15,
+            "France": 12,
+            "Russia": 14,
+            "Austria Hungary": 10,
+            "Britain": 15,
+            "Serbia": 6,
+            "Ottoman Empire": 13,
+            "Bulgaria": 8,
+            "Romania": 7,
+            "Montenegro": 3,
+            "Greece": 11,
+            "Belgium": 9,
+            "Luxembourg": 2,
+            "Italy": 9,
+            "Japan": 12,
+
+        }
+
+        let chosen = country.value
+            let values = countryvalues[chosen]
+        function submit() {
+            if (!teams) {
+            chosen = country.value
+            values = countryvalues[chosen]
+            team1.push({name: chosen, value: values})
+            first.innerHTML = "<ul>" + team1.map(c => "<li> " + c.name + " (" + c.value + ")" + "</li>").join("") + "</ul>"
+
+            }
+
+            else {
+            chosen = country.value
+            values = countryvalues[chosen]
+            team2.push({name: chosen, value: values})
+            second.innerHTML = "<ul>" + team2.map(c => "<li> " + c.name + " (" + c.value + ")" + "</li>").join("") + "</ul>"
+            
+            }
+        }
+        function nextTeam() {
+
+            teams = true
+
+            if (teams) {
+                country.innerHTML = "<option value='Germany'>Germany</option><option value='Austria Hungary'>Austria Hungary</option><option value='Ottoman Empire'>Ottoman Empire</option><option value='Bulgaria'>Bulgaria</option>"
+            }
+
+            
+            next.innerHTML = "Team 1"
+            next.onclick = function() {
+                next.innerHTML = "Team 2"
+                teams = false
+                next.onclick = nextTeam
+              
+                country.innerHTML = texto
+            
+            }
+        }
+
+        function fight() {
+           let team1Total = team1.reduce((sum, c) => sum + c.value, 0)
+           let team2Total = team2.reduce((sum, c) => sum + c.value, 0)
+            if (team1Total > team2Total) {
+                console.log("team1 Win")
+                logs.showModal()
+                vict.innerHTML = "The Eternete Won"
+                cento.innerHTML = team1Total + " > " + team2Total
+            }
+
+            else if (team2Total > team1Total) {
+                console.log("team2 Win")
+                logs.showModal()
+                vict.innerHTML = "The Central Powers Won"
+                cento.innerHTML = team1Total + " < " + team2Total
+            }
+            else {
+                logs.showModal()
+                vict.innerHTML = "It's a tie!"
+                cento.innerHTML = team1Total + " < " + team2Total
+            }
+        }
+
+            let times = 10
+            let altimes = 14
+            let count = 0
+            let alcount = 0
+        function randoms() {
+           
+            let central = [
+                "Germany",
+                "Austria Hungary",
+                "Ottoman Empire",
+                "Bulgaria",
+        ]
+
+        let eternete = [
+            "France",
+            "Russia",
+            "Britain",
+            "Serbia",
+            "Romania",
+            "Montenegro",
+            "Greece",
+            "Belgium",
+            "Luxembourg",
+            "Italy",
+            "Japan",
+
+        ]
+             
+            const inter = setInterval(function() {
+
+        
+                if (count != times) {
+                    count++
+                    let centralRandom = Math.floor(Math.random() * central.length)
+                    chosen = central[centralRandom]
+                    values = countryvalues[chosen]
+                    team2.push({name: chosen, value: values})
+                    second.innerHTML = ""
+            second.innerHTML = "<ul>" + team2.map(c => "<li> " + c.name + " (" + c.value + ")" + "</li>").join("") + "</ul>"
+                }
+
+                if (alcount != altimes) {
+                    alcount++
+                    let alliedRandom = Math.floor(Math.random() * eternete.length)
+                    chosen = eternete[alliedRandom]
+                    values = countryvalues[chosen]
+                    team1.push({name: chosen, value: values})
+                    first.innerHTML = ""
+            first.innerHTML = "<ul>" + team1.map(c => "<li> " + c.name + " (" + c.value + ")" + "</li>").join("") + "</ul>"
+                }
+
+                if (alcount == times && count == times) {
+                    clearInterval(inter)
+                }
+
+            }, 500)
+        }
+
+        function deletes() {
+            team1 = []
+            team2 = []
+            first.innerHTML = null
+            second.innerHTML = null
+            coumt = 0
+            alcount = 0
+        }
+    </script>
+</body>
+</html>
