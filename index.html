@@ -65,6 +65,14 @@
         padding-left: 20px;
         list-style-position: inside;
         word-wrap: break-word;
+        
+    }
+
+    h1 {
+        border: 2px solid black;
+        background-color: lightgrey;
+        border-radius: 5px;
+        padding: 5px;
     }
 </style>
 </head>
@@ -74,16 +82,16 @@
    <label for="country">Pick Country Here</label>
         <select id="country">
             
-            <option value="France">France</option>
-            <option value="Russia">Russia</option>
+            <option value="France">France 🇫🇷</option>
+            <option value="Russia">Russia 🇷🇺</option>
            
-            <option value="Britain">United Kingdom</option>
-            <option value="Serbia">Serbia</option>
-            <option value="Romania">Romania</option>
-            <option value="Montenegro">Montenegro</option>
-            <option value="Greece">Greece</option>
-            <option value="Belgium">Belgium</option>
-            <option value="Luxembourg">Luxembourg</option>
+            <option value="Britain">United Kingdom 🇬🇧</option>
+            <option value="Serbia">Serbia 🇷🇸</option>
+            <option value="Romania">Romania 🇷🇴</option>
+            <option value="Montenegro">Montenegro 🇲🇪</option>
+            <option value="Greece">Greece 🇬🇷</option>
+            <option value="Belgium">Belgium 🇧🇪</option>
+            <option value="Luxembourg">Luxembourg 🇱🇺</option>
         </select>
     </form><br>
 
@@ -92,8 +100,7 @@
     <button onclick="fight()">Fight</button>
      <button onclick="randoms()">Randomise 10/10</button>
      <button onclick="deletes()">Delete</button>
- <a href='https://www.free-counters.org/'>Free-Counters</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=e6040235445b418a651f0135544614c22a8937c7'></script>
-<script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1393475/t/5"></script>
+
     <br>
     <br>
     <div class="container">
@@ -123,7 +130,7 @@
         let team2 = []
         let teams = false
 
-        let texto = "<option value='France'>France</option><option value='Russia'>Russia</option><option value='Britain'>United Kingdom</option><option value='Serbia'>Serbia</option><option value='Romania'>Romania</option><option value='Montenegro'>Montenegro</option><option value='Greece'>Greece</option><option value='Belgium'>Belgium</option><option value='Luxembourg'>Luxembourg</option>"
+        let texto = "<option value='France'>France 🇫🇷</option><option value='Russia'>Russia 🇷🇺</option><option value='Britain'>United Kingdom 🇬🇧</option><option value='Serbia'>Serbia 🇷🇸</option><option value='Romania'>Romania 🇷🇴</option><option value='Montenegro'>Montenegro 🇲🇪</option><option value='Greece'>Greece 🇬🇷</option><option value='Belgium'>Belgium 🇧🇪</option><option value='Luxembourg'>Luxembourg 🇱🇺</option>"
         
 
         const countryvalues = {
@@ -172,10 +179,10 @@
             teams = true
 
             if (teams) {
-                country.innerHTML = "<option value='Germany'>Germany</option><option value='Austria Hungary'>Austria Hungary</option><option value='Ottoman Empire'>Ottoman Empire</option><option value='Bulgaria'>Bulgaria</option><option value='Ethiopia'>Ethiopia</option><option value='Greek Royalists'>Greek Royalists</option><option value='Post-Armistice Romania'>Post-Armistice Romania</option>"
+                country.innerHTML = "<option value='Germany'>Germany 🇩🇪</option><option value='Austria Hungary'>Austria Hungary 🇭🇺🇦🇹</option><option value='Ottoman Empire'>Ottoman Empire 🇹🇷</option><option value='Bulgaria'>Bulgaria 🇧🇬</option><option value='Ethiopia'>Ethiopia 🇪🇹</option><option value='Greek Royalists'>Greek Royalists 🇬🇷</option><option value='Post-Armistice Romania'>Post-Armistice Romania 🇷🇴</option>"
             }
 
-            
+
             next.innerHTML = "Team 1"
             next.onclick = function() {
                 next.innerHTML = "Team 2"
@@ -193,14 +200,14 @@
             if (team1Total > team2Total) {
                 console.log("team1 Win")
                 logs.showModal()
-                vict.innerHTML = "The Eternete Won"
+                vict.innerHTML = "The Eternete Won 🇬🇧🥇🇫🇷"
                 cento.innerHTML = team1Total + " > " + team2Total
             }
 
             else if (team2Total > team1Total) {
                 console.log("team2 Win")
                 logs.showModal()
-                vict.innerHTML = "The Central Powers Won"
+                vict.innerHTML = "The Central Powers Won 🇩🇪🥇🇦🇹"
                 cento.innerHTML = team1Total + " < " + team2Total
             }
             else {
@@ -217,13 +224,13 @@
         function randoms() {
            
             let central = [
-                "Germany",
-                "Austria Hungary",
-                "Ottoman Empire",
-                "Bulgaria",
-                "Greek Royalists",
-            "Ethiopia",
-            "Post-Armistice Romania",
+                "Germany ",
+                "Austria Hungary ",
+                "Ottoman Empire ",
+                "Bulgaria ",
+                "Greek Royalists ",
+            "Ethiopia ",
+            "Post-Armistice Romania ",
         ]
 
         let eternete = [
