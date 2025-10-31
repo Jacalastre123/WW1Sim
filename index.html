@@ -92,6 +92,8 @@
             <option value="Greece">Greece 🇬🇷</option>
             <option value="Belgium">Belgium 🇧🇪</option>
             <option value="Luxembourg">Luxembourg 🇱🇺</option>
+            <option value='China'>China 🇨🇳</option>
+            <option value='Japan'>Japan 🇯🇵</option>
         </select>
     </form><br>
 
@@ -130,7 +132,7 @@
         let team2 = []
         let teams = false
 
-        let texto = "<option value='France'>France 🇫🇷</option><option value='Russia'>Russia 🇷🇺</option><option value='Britain'>United Kingdom 🇬🇧</option><option value='Serbia'>Serbia 🇷🇸</option><option value='Romania'>Romania 🇷🇴</option><option value='Montenegro'>Montenegro 🇲🇪</option><option value='Greece'>Greece 🇬🇷</option><option value='Belgium'>Belgium 🇧🇪</option><option value='Luxembourg'>Luxembourg 🇱🇺</option>"
+        let texto = "<option value='France'>France 🇫🇷</option><option value='Russia'>Russia 🇷🇺</option><option value='Britain'>United Kingdom 🇬🇧</option><option value='Serbia'>Serbia 🇷🇸</option><option value='Romania'>Romania 🇷🇴</option><option value='Montenegro'>Montenegro 🇲🇪</option><option value='Greece'>Greece 🇬🇷</option><option value='Belgium'>Belgium 🇧🇪</option><option value='Luxembourg'>Luxembourg 🇱🇺</option><option value='China'>China 🇨🇳</option><option value='Japan'>Japan 🇯🇵</option>"
         
 
         const countryvalues = {
@@ -152,6 +154,11 @@
             "Greek Royalists": 8,
             "Ethiopia": 6,
             "Post-Armistice Romania": 5,
+            "China": 7,
+            "Japan": 12,
+            "Soviets": 10,
+
+
 
         }
 
@@ -179,7 +186,7 @@
             teams = true
 
             if (teams) {
-                country.innerHTML = "<option value='Germany'>Germany 🇩🇪</option><option value='Austria Hungary'>Austria Hungary 🇭🇺🇦🇹</option><option value='Ottoman Empire'>Ottoman Empire 🇹🇷</option><option value='Bulgaria'>Bulgaria 🇧🇬</option><option value='Ethiopia'>Ethiopia 🇪🇹</option><option value='Greek Royalists'>Greek Royalists 🇬🇷</option><option value='Post-Armistice Romania'>Post-Armistice Romania 🇷🇴</option>"
+                country.innerHTML = "<option value='Germany'>Germany 🇩🇪</option><option value='Austria Hungary'>Austria Hungary 🇭🇺🇦🇹</option><option value='Ottoman Empire'>Ottoman Empire 🇹🇷</option><option value='Bulgaria'>Bulgaria 🇧🇬</option><option value='Ethiopia'>Ethiopia 🇪🇹</option><option value='Greek Royalists'>Greek Royalists 🇬🇷</option><option value='Post-Armistice Romania'>Post-Armistice Romania 🇷🇴</option><option value='Soviet'>Soviet Rebels</option>"
             }
 
 
@@ -224,13 +231,14 @@
         function randoms() {
            
             let central = [
-                "Germany ",
-                "Austria Hungary ",
-                "Ottoman Empire ",
-                "Bulgaria ",
-                "Greek Royalists ",
-            "Ethiopia ",
-            "Post-Armistice Romania ",
+                "Germany",
+                "Austria Hungary",
+                "Ottoman Empire",
+                "Bulgaria",
+                "Greek Royalists",
+            "Ethiopia",
+            "Post-Armistice Romania",
+                "Soviets",
         ]
 
         let eternete = [
@@ -245,6 +253,7 @@
             "Luxembourg",
             "Italy",
             "Japan",
+            "China",
 
         ]
              
